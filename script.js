@@ -17,7 +17,7 @@ var increaseScore = function() {
 }
 
 //enemies
-arena.selectAll('circle').data(d3.range(20)).enter().append('circle').attr({
+arena.selectAll('circle').data(d3.range(30)).enter().append('circle').attr({
   'r': radius,
   'cx': function(){return Math.random() * width;},
   'cy': function(){return Math.random() * height;},
@@ -32,7 +32,7 @@ var move = function() {
     'cx': function(){return Math.random() * width;},
     'cy': function(){return Math.random() * height;}
   })
-  .tween('custom', function(d, i, a){
+  .tween('custom', function(d, i){
     var enemy = d3.select(this);
 
     return function(){
@@ -101,4 +101,3 @@ var explosion = function(x, y) {
   })
   .style('opacity', '0').remove();
 }
-

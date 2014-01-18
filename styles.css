@@ -21,8 +21,19 @@ body{
   display: inline-block;
   width: 19%;
   height: 100%;
+  -webkit-animation: rotate 3s;
 }
 
-.scoreboard p {
-  
+.scoreboard {
+
+}
+
+@keyframes rotate {
+  from {
+    background-color: 'red';
+  }
+
+  to {
+    background-color: 'yellow';
+  }
 }
