@@ -66,8 +66,6 @@ var player = arena.append('circle').attr({
 
 player.call(drag);
 
-
-
 //collision detection
 var collisions = 0;
 
@@ -84,8 +82,23 @@ var checkCollision = function(enemy, i){
     }
     score = 0;
     d3score.text(score);
-    //debugger;
-    console.log('Collision with ', i);
+    explosion(+player.attr('cx'), +player.attr('cy'));
   }
 };
+
+//getting fancy
+
+var explosion = function(x, y) {
+  arena.insert('circle', ":first-child").attr({
+    'r': 20,
+    'cx': x,
+    'cy': y,
+    'fill' : 'purple'
+  }).transition()
+  .duration(500)
+  .attr({
+    'r': 100,
+  })
+  .style('opacity', '0').remove();
+}
 
