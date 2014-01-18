@@ -1,9 +1,20 @@
-var width = window.innerWidth;
-var height = window.innerHeight;
 var radius = 20;
+var width = parseInt(d3.select('.arena').style('width'));
+var height = parseInt(d3.select('.arena').style('height'));
 
+var arena = d3.select('.arena').append('svg').style('width', '100%').style('height', '100%');
 
-var arena = d3.select('body').append('svg').style('width', width).style('height', height);
+var score = 0;
+var highscore = 0;
+
+//scoring
+var d3score = d3.select('.score');
+var d3highscore = d3.select('.highscore');
+
+var increaseScore = function() {
+  score += 1;
+  d3score.text(score);
+}
 
 //enemies
 arena.selectAll('circle').data(d3.range(20)).enter().append('circle').attr({
@@ -33,6 +44,7 @@ var move = function() {
 
 move();
 
+setInterval(increaseScore, 10);
 setInterval(move, 1600);
 
 //player
@@ -66,6 +78,12 @@ var checkCollision = function(enemy, i){
   var dist = Math.sqrt(x * x + y * y);
   if(dist < 2 * radius) {
     collisions += 1;
+    if(score > highscore) {
+      highscore = score;
+      d3highscore.text(highscore);
+    }
+    score = 0;
+    d3score.text(score);
     //debugger;
     console.log('Collision with ', i);
   }

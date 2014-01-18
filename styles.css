@@ -1,7 +1,28 @@
+body{
+  margin: 0;
+}
+
 .enemy{
 
 }
 
 .player{
 
+}
+
+.arena{
+  width: 80%;
+  height: 100%;
+  display: inline-block;
+}
+
+.scoreboard{
+  float: right;
+  display: inline-block;
+  width: 19%;
+  height: 100%;
+}
+
+.scoreboard p {
+  
 }
